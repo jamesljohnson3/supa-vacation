@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
@@ -11,7 +11,7 @@ import path from 'path';
 // Email sender
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_SERVER_HOST,
-  port: process.env.EMAIL_SERVER_PORT,
+  port: Number(process.env.EMAIL_PORT) || 0,
   auth: {
     user: process.env.EMAIL_SERVER_USER,
     pass: process.env.EMAIL_SERVER_PASSWORD,
@@ -60,7 +60,10 @@ const sendWelcomeEmail = async ({ user }) => {
   }
 };
 
-export default NextAuth({
+
+export const authOptions = {
+
+
   pages: {
     signIn: '/',
     signOut: '/',
@@ -77,6 +80,18 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  adapter: PrismaAdapter(prisma),
   events: { createUser: sendWelcomeEmail },
-});
+  adapter: PrismaAdapter(prisma),
+  callbacks: {
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+        username: user.username,
+      },
+    }),
+  },
+} as NextAuthOptions;
+
+export default NextAuth(authOptions);
