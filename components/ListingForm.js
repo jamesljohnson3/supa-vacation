@@ -32,7 +32,6 @@ const [imageUrl, setImageUrl] = useState(initialValues?.image ?? '');
 const upload = async image => {
 if (!image) return;
 
-Copy code
 let toastId;
 try {
   setDisabled(true);
