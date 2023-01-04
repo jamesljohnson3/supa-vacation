@@ -7,7 +7,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <AuthProvider session={session}>
-      <ClerkProvider {...pageProps}></ClerkProvider>
+      <ClerkProvider {...pageProps}>        <SignedOut>   </SignedOut><RedirectToSignIn />
+</ClerkProvider>
       </AuthProvider>
 
       <Toaster />
