@@ -107,7 +107,7 @@ return (
       </button>
 
       {pictureError ? (
-        <span className="text-red-600 text-sm">Uploaded- test</span>
+        <span className="text-red-600 text-sm">{pictureError}</span>
       ) : null}
     </div>
   );
