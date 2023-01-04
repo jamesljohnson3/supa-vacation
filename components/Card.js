@@ -18,15 +18,13 @@ const Card = ({
     <a className="block w-full">
       <div className="relative">
         <div className="bg-gray-200 rounded-lg shadow overflow-hidden aspect-w-16 aspect-h-9">
-          {image ? (
-            <Image
+        <Image
               src="https://res.cloudinary.com/unlimitednow/image/upload/v1671782001/y3czkurlfbbxejxo2dbc.png"
               alt={title}
               layout="fill"
               objectFit="cover"
               className="hover:opacity-80 transition"
             />
-          ) : null}
         </div>
         <button
           type="button"
