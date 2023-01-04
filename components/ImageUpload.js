@@ -4,83 +4,86 @@ import Image from 'next/image';
 import toast from 'react-hot-toast';
 import classNames from 'classnames';
 import { ArrowUpIcon } from '@heroicons/react/outline';
+import { uploadImageToCloudinary } from '../utils/cloudinary';
 
 const ImageUpload = ({
-  label = 'Image',
-  initialImage = null,
-  objectFit = 'cover',
-  accept = '.png, .jpg, .jpeg, .gif',
-  sizeLimit = 10 * 1024 * 1024, // 10MB
-  onChangePicture = () => null,
+label = 'Image',
+initialImage = null,
+objectFit = 'cover',
+accept = '.png, .jpg, .jpeg, .gif',
+sizeLimit = 10 * 1024 * 1024, // 10MB
+onChangePicture = () => null,
 }) => {
-  const pictureRef = useRef();
+const pictureRef = useRef();
 
-  const [image, setImage] = useState(initialImage);
-  const [updatingPicture, setUpdatingPicture] = useState(false);
-  const [pictureError, setPictureError] = useState(null);
+const [image, setImage] = useState(initialImage);
+const [updatingPicture, setUpdatingPicture] = useState(false);
+const [pictureError, setPictureError] = useState(null);
 
-  const handleOnChangePicture = e => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+const handleOnChangePicture = e => {
+const file = e.target.files[0];
+const reader = new FileReader();
+const fileName = file?.name?.split('.')?.[0] ?? 'New file';
 
-    const fileName = file?.name?.split('.')?.[0] ?? 'New file';
+reader.addEventListener(
+  'load',
+  async function () {
+    try {
+      setUpdatingPicture(true);
+      setPictureError('');
 
-    reader.addEventListener(
-      'load',
-      async function () {
-        try {
-          setImage({ src: reader.result, alt: fileName });
-          if (typeof onChangePicture === 'function') {
-            await onChangePicture(reader.result);
-          }
-        } catch (err) {
-          toast.error('Unable to update image');
-        } finally {
-          setUpdatingPicture(false);
-        }
-      },
-      false
-    );
+      // Call the function to upload the image to Cloudinary and get the URL back
+      const imageUrl = await uploadImageToCloudinary(file);
 
-    if (file) {
-      if (file.size <= sizeLimit) {
-        setUpdatingPicture(true);
-        setPictureError('');
-        reader.readAsDataURL(file);
-      } else {
-        setPictureError('File size is exceeding 10MB.');
+      setImage({ src: imageUrl, alt: fileName });
+      if (typeof onChangePicture === 'function') {
+        await onChangePicture(imageUrl);
       }
+    } catch (err) {
+      toast.error('Unable to update image');
+    } finally {
+      setUpdatingPicture(false);
     }
-  };
+  },
+  false
+);
 
-  const handleOnClickPicture = () => {
-    if (pictureRef.current) {
-      pictureRef.current.click();
-    }
-  };
+if (file) {
+  if (file.size <= sizeLimit) {
+    reader.readAsDataURL(file);
+  } else {
+    setPictureError('File size is exceeding 10MB.');
+  }
+}
+};
 
-  return (
-    <div className="flex flex-col space-y-2">
-      <label className="text-gray-600">{label}</label>
+const handleOnClickPicture = () => {
+if (pictureRef.current) {
+pictureRef.current.click();
+}
+};
 
-      <button
-        disabled={updatingPicture}
-        onClick={handleOnClickPicture}
-        className={classNames(
-          'relative aspect-w-16 aspect-h-9 overflow-hidden rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition group focus:outline-none',
-          image?.src
-            ? 'hover:opacity-50 disabled:hover:opacity-100'
-            : 'border-2 border-dashed hover:border-gray-400 focus:border-gray-400 disabled:hover:border-gray-200'
-        )}
-      >
-        {image?.src ? (
-          <Image
-            src={image.src}
-            alt={image?.alt ?? ''}
-            layout="fill"
-            objectFit={objectFit}
-          />
-        ) : null}
+return (
+<div className="flex flex-col space-y-2">
+<label className="text-gray-600">{label}</label>
+<button
+    disabled={updatingPicture}
+    onClick={handleOnClickPicture}
+    className={classNames(
+      'relative aspect-w-16 aspect-h-9 overflow-hidden rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition group focus:outline-none',
+      image?.src
+        ? 'hover:opacity-50 disabled:hover:opacity-100'
+        : 'border-2 border-dashed hover:border-gray-400 focus:border-gray-400 disabled:hover:border-gray-200'
+    )}
+  >
+    {image?.src ? (
+      <Image
+        src={image.src}
+        alt={image?.alt ?? ''}
+        layout="fill"
+        objectFit={objectFit}
+      />
+    ) : null}
 
         <div className="flex items-center justify-center">
           {!image?.src ? (
