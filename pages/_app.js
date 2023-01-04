@@ -6,12 +6,19 @@ import {ClerkProvider, RedirectToSignIn, SignedIn, SignedOut,} from "@clerk/next
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
+        <ClerkProvider> <SignedIn>
+
       <AuthProvider session={session}>
-      <ClerkProvider {...pageProps}>      
-</ClerkProvider>
+        <Component {...pageProps} />
       </AuthProvider>
 
-      <Toaster />
+      <Toaster />   </SignedIn>
+    <SignedOut>
+  
+        <RedirectToSignIn />
+ 
+    </SignedOut>  </ClerkProvider>
+
     </>
   );
 }
