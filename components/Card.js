@@ -20,7 +20,7 @@ const Card = ({
         <div className="bg-gray-200 rounded-lg shadow overflow-hidden aspect-w-16 aspect-h-9">
           {image ? (
             <Image
-              src={image}
+              src="https://res.cloudinary.com/unlimitednow/image/upload/v1671782001/y3czkurlfbbxejxo2dbc.png"
               alt={title}
               layout="fill"
               objectFit="cover"
