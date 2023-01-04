@@ -69,7 +69,6 @@ const Layout = ({ children = null }) => {
             <div className="h-full px-4 flex justify-between items-center space-x-4">
               <Link href="/">
                 <a className="flex items-center space-x-1">
-                  <SparklesIcon className="shrink-0 w-8 h-8 text-rose-500" />
                   <span className="text-xl font-semibold tracking-wide">
                     Unlimit<span className="text-yellow-600">Potential</span>®
                   </span>
