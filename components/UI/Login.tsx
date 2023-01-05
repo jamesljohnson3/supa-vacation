@@ -4,6 +4,7 @@ import { IoLogoGoogle } from 'react-icons/io';
 import router from 'next/router';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import React from 'react';
 
 type LoginProperties = {
   resetPassword: (data: string) => Promise<{
