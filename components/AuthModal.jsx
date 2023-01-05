@@ -224,13 +224,12 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
                       onSubmit={signInWithEmail}
-                    >
+                    >{primaryEmailAddress.toString()}
                       {({ isSubmitting, isValid, values, resetForm }) => (
                         <Form className="mt-4">
                           <Input
                             name="email"
                             type="email"
-                            value= {primaryEmailAddress}
                             placeholder="elon@spacex.com"
                             disabled={disabled}
                             spellCheck={false}
