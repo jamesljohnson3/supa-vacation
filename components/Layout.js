@@ -74,7 +74,13 @@ const Layout = ({ children = null }) => {
                   </span>
                 </a>
               </Link>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4"><button
+                    type="button"
+                    onClick={signOut}
+                    className="ml-4 px-4 py-1 rounded-md bg-black-600 hover:black-rose-500 focus:outline-none focus:ring-4 black:ring-rose-500 focus:ring-opacity-50 text-white transition"
+                  >
+                   Switch
+                  </button>
                 <button
                   onClick={() => {
                     session?.user ? router.push('/sites') : openModal();
@@ -184,13 +190,7 @@ const Layout = ({ children = null }) => {
         </main>
 
         <AuthModal show={showModal} onClose={closeModal} />
-      </div> <button
-                    type="button"
-                    onClick={signOut}
-                    className="ml-4 px-4 py-1 rounded-md bg-black-600 hover:black-rose-500 focus:outline-none focus:ring-4 black:ring-rose-500 focus:ring-opacity-50 text-white transition"
-                  >
-                   Switch
-                  </button>
+      </div> 
     </>
   );
 };
