@@ -10,22 +10,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
 import Input from './Input';
 
-const sendEmail = async (email) => {
-  try {
-    const response = await fetch('https://connect.unlimitednow.site/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,10 +17,6 @@ const SignInSchema = Yup.object().shape({
     .email('Invalid email')
     .required('This field is required'),
 });
-const handleSubmit = (values) => {
-  sendEmail(values.email);
-  // rest of the submit logic
-};
 
 const Confirm = ({ show = false, email = '' }) => (
   <Transition appear show={show} as={Fragment}>
@@ -321,3 +301,25 @@ AuthModal.propTypes = {
 
 export default AuthModal;
 
+
+const sendEmail = async (email) => {
+  try {
+    const response = await fetch('https://connect.unlimitednow.site/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+const handleSubmit = (values) => {
+  sendEmail(values.email);
+  // rest of the submit logic
+};
