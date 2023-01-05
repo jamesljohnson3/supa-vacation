@@ -16,7 +16,7 @@ function MyComponent() {
     return <div>Not authenticated</div>;
   }
 
-  return  <div>Session: {JSON.stringify(session)}</div>;
+  return <div>Authenticated</div>;
 }
 
 export default MyComponent
