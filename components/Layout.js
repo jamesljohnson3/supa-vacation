@@ -47,10 +47,10 @@ const Layout = ({ children = null }) => {
   const user = session?.user;
   const isLoadingUser = status === 'loading';
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
+  const closeModal = () => setShowModal(true);
 
   return (
     <>
