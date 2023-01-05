@@ -184,7 +184,13 @@ const Layout = ({ children = null }) => {
         </main>
 
         <AuthModal show={showModal} onClose={closeModal} />
-      </div>
+      </div> <button
+                    type="button"
+                    onClick={signOut}
+                    className="ml-4 px-4 py-1 rounded-md bg-black-600 hover:black-rose-500 focus:outline-none focus:ring-4 black:ring-rose-500 focus:ring-opacity-50 text-white transition"
+                  >
+                   Switch
+                  </button>
     </>
   );
 };
