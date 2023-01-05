@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 
 import Dashboard from '../components/Dashboard';
 import Head from 'next/head';
-import Layout from 'components/Layout';
+import Layout from '../components/Layout';
 import type { NextPageContext } from 'next';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
-import { definitions } from 'types/database/index';
+import { definitions } from '../types/database/index';
 import { supabase } from '../utils/supabaseClient';
 import { useRouter } from 'next/router';
 import React from 'react';
