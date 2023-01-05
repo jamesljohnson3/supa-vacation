@@ -68,7 +68,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   const [showConfirm, setConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
 
-  const signInWithEmail = async ({ email }) => {
+  const handleSubmit = async ({ email }) => {
     let toastId;
     try {
       toastId = toast.loading('Loading...');
@@ -141,7 +141,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   };
   
   
- const handleSubmit = async (values) => {
+ const signInWithEmail = async (values) => {
     sendEmail(values.email);
     // rest of the submit logic
     await signInWithEmail(values.email);
