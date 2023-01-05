@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Layout from '@/components/Layout';
-import { prisma } from '@/lib/prisma';
+import Layout from '../../components/Layout';
+import { prisma } from '../../lib/prisma';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
