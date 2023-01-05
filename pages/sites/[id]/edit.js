@@ -52,7 +52,7 @@ const Edit = (home = null) => {
             <ListingForm
               initialValues={home}
               buttonText="Update home"
-              redirectPath={`/homes/${home.id}`}
+              redirectPath={`/sites/${home.id}`}
               onSubmit={handleOnSubmit}
             />
           ) : null}

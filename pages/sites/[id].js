@@ -73,7 +73,7 @@ const ListedHome = (home = null) => {
               <button
                 type="button"
                 disabled={deleting}
-                onClick={() => router.push(`/homes/${home.id}/edit`)}
+                onClick={() => router.push(`/sites/${home.id}/edit`)}
                 className="px-4 py-1 border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition rounded-md disabled:text-gray-800 disabled:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Edit
