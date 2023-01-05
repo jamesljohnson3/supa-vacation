@@ -35,7 +35,7 @@ const menuItems = [
   },
   {
     label: 'Manage',
-    icon: HeartIcon,
+    icon: SparklesIcon,
     href: 'https://spaces.unlimitpotential.com/account',
   },
 ];
