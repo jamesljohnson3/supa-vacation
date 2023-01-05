@@ -14,6 +14,7 @@ import { Session } from '@supabase/gotrue-js';
 import { supabase } from '../utils/supabaseClient';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import React from 'react';
 
 type DashboardProperties = {
   profile: { username: string; website: string; avatar_url: string };
