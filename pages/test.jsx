@@ -16,7 +16,7 @@ const Create = () => {
     };
   }
 
-  const addHome = (data) => axios.post('/api/homes', data);
+  const addHome = (data) => axios.post('/api/sitev1', data);
 
   return (
     <Layout>
