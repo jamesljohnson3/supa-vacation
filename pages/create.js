@@ -1,13 +1,13 @@
 import axios from 'axios';
 import Layout from '@/components/Layout';
 import ListingForm from '@/components/ListingForm';
-import { useClerk } from "@clerk/clerk-react";
+import { getSession } from '@clerk/clerk-react';
 
 export async function getServerSideProps(context) {
-  // Initialize Clerk
-  const { session, isLoaded } = useClerk(context);
+  // Check if user is authenticated
+  const session = await getSession(context);
 
-  // If user is not authenticated, redirect to the homepage
+  // If not, redirect to the homepage
   if (!session) {
     return {
       redirect: {
