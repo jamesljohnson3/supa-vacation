@@ -12,7 +12,7 @@ const EmailForm = () => {
 
     try {
       // Send API call to NextAuth to trigger email API
-      await axios.post('/api/auth/email/send', {
+      await axios.post('/api/auth/email', {
         email,
       });
     } catch (error) {
