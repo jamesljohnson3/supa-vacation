@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Card from '@/components/Card';
+import Card from './Card';
 import { ExclamationIcon } from '@heroicons/react/outline';
 
 const Grid = ({ homes = [] }) => {

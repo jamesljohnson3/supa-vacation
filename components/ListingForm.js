@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Formik, Form } from 'formik';
-import Input from '@/components/Input';
-import ImageUpload from '@/components/ImageUpload';
+import Input from './Input';
+import ImageUpload from './ImageUpload';
 
 const ListingSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
