@@ -140,7 +140,7 @@ const Dashboard = ({
       </div>
 
       <div className="flex flex-row flex-wrap w-full max-w-xl p-5 m-auto my-5 border-2 shadow-lg bordered border-primary">
-        <Image src={Plan as string} alt="credit card" />
+        <Image src={null} alt="credit card" />
         <div className="flex flex-col m-auto">
           <h2>Your current plan</h2>
           <p className="">{planName}</p>
