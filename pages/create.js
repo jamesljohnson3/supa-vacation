@@ -1,15 +1,13 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { getSession } from 'next-auth/react';
 import axios from 'axios';
 import Layout from '@/components/Layout';
 import ListingForm from '@/components/ListingForm';
-import { useSession } from "@clerk/clerk-react";
+import { useClerk } from "@clerk/clerk-react";
 
 export async function getServerSideProps(context) {
-  // Check if user is authenticated
-  const { isLoaded, session } = useSession();
+  // Initialize Clerk
+  const { session, isLoaded } = useClerk(context);
 
-  // If not, redirect to the homepage
+  // If user is not authenticated, redirect to the homepage
   if (!session) {
     return {
       redirect: {
@@ -23,7 +21,6 @@ export async function getServerSideProps(context) {
     props: {},
   };
 }
-
 const Create = () => {
   const addHome = data => axios.post('/api/homes', data);
 
