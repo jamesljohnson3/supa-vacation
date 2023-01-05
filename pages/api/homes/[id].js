@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react';
-import { prisma } from '@/lib/prisma';
-import { supabase } from '@/lib/supabase';
+import { prisma } from '../../../lib/prisma';
+import { supabase } from '../../../lib/supabase';
 
 export default async function handler(req, res) {
   // Check if user is authenticated
