@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
-import { useAuth } from 'utils/AuthContext';
+import { useAuth } from '../utils/AuthContext';
 import React from 'react';
 
 type LayoutProperties = {
