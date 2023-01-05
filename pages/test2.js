@@ -12,7 +12,7 @@ const MyComponent = () => {
     if (user) {
       setUser(user);
     }
-  }, [user, loading]);
+  }, [user, loading, setUser]);
 
   return <p>Logged in as: {user?.email}</p>;
 }
