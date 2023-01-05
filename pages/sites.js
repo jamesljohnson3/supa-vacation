@@ -31,6 +31,22 @@ export async function getServerSideProps(context) {
   };
 }
 
+const deleteHome = async () => {
+  let toastId;
+  try {
+    toastId = toast.loading('Deleting...');
+    setDeleting(true);
+    // Delete home from DB
+    await axios.delete(`/api/homes/${home.id}`);
+    // Redirect user
+    toast.success('Successfully deleted', { id: toastId });
+    router.push('/homes');
+  } catch (e) {
+    console.log(e);
+    toast.error('Unable to delete home', { id: toastId });
+    setDeleting(false);
+  }
+};
 const Homes = ({ homes = [] }) => {
   return (
     <Layout>
