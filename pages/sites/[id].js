@@ -37,7 +37,7 @@ const ListedHome = (home = null) => {
       await axios.delete(`/api/homes/${home.id}`);
       // Redirect user
       toast.success('Successfully deleted', { id: toastId });
-      router.push('/homes');
+      router.push('/sites');
     } catch (e) {
       console.log(e);
       toast.error('Unable to delete home', { id: toastId });
