@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { getSession } from 'next-auth/react';
 import axios from 'axios';
 import Layout from '@/components/Layout';
 import ListingForm from '@/components/ListingForm';
-import { getSession } from "@clerk/clerk-react";
+import { useSession } from "@clerk/clerk-react";
 
 export async function getServerSideProps(context) {
   // Check if user is authenticated
-  const session = await getSession(context);
+  const { isLoaded, session } = useSession();
 
   // If not, redirect to the homepage
   if (!session) {
