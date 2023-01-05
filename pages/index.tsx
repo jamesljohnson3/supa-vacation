@@ -6,7 +6,7 @@ and the "AuthText" that will show the description on the left of the screen
 
 import AuthComponent from '../components/SignUp';
 import AuthText from '../components/AuthText';
-import Layout from 'components/Layout';
+import Layout from '../components/Layout';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 

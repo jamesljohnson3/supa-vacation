@@ -9,8 +9,8 @@ check the providers available here: https://supabase.io/docs/guides/auth
 
 import SignUpPanel from './UI/SignUpPanel';
 import { SupabaseClient } from '@supabase/supabase-js';
-import { supabase } from 'utils/supabaseClient';
-import { useAuth } from 'utils/AuthContext';
+import { supabase } from '../utils/supabaseClient';
+import { useAuth } from '../utils/AuthContext';
 import React from 'react';
 
 type ContainerProperties = {
