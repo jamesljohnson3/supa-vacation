@@ -1,5 +1,5 @@
 import { useClerk } from '@clerk/clerk-react';
-import { getSession } from 'next-auth/client';
+import { getSession } from 'next-auth/react';
 
 function MyComponent() {
   const { isLoaded, session } = useClerk();
