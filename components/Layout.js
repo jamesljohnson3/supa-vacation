@@ -19,19 +19,19 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 
 const menuItems = [
   {
-    label: 'List a new home',
+    label: 'Create a new site',
     icon: PlusIcon,
     href: '/create',
   },
   {
-    label: 'My homes',
+    label: 'My sites',
     icon: HomeIcon,
     href: '/homes',
   },
   {
-    label: 'Favorites',
+    label: 'Find Inspiration',
     icon: HeartIcon,
-    href: '/favorites',
+    href: 'https://get.unlimitednow.site',
   },
   {
     label: 'Logout',
