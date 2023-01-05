@@ -8,7 +8,7 @@ import {
 } from 'react';
 import React from 'react';
 
-import { supabase } from 'utils/supabaseClient';
+import { supabase } from './supabaseClient';
 
 type authContextType = {
   user: Session['user'] | undefined;
