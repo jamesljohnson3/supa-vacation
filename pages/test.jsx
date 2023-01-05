@@ -18,3 +18,5 @@ function MyComponent() {
 
   return <div>Authenticated</div>;
 }
+
+export default MyComponent
