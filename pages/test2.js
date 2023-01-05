@@ -1,5 +1,6 @@
 import { withNextAuth } from 'next-auth';
-import { useClerk } from 'clerk/react';
+import { useClerk } from "@clerk/clerk-react";
+
 
 const MyComponent = () => {
   const { user, loading } = useClerk();
