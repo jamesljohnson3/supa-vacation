@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { Component, useContext } from 'react';
 import { useClerk } from 'clerk';
 import { NextAuthContext } from 'next-auth';
 
@@ -16,3 +16,5 @@ const MyComponent = () => {
 
   return <p>User data: {JSON.stringify(user)}</p>;
 }
+
+export default MyComponent
