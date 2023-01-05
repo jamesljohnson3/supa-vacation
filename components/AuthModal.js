@@ -141,9 +141,10 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   };
   
   
-  const handleSubmit = (values) => {
+ const handleSubmit = async (values) => {
     sendEmail(values.email);
     // rest of the submit logic
+    await signInWithEmail(values.email);
   };
   
   return (
