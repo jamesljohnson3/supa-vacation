@@ -10,7 +10,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
 import Input from './Input';
 
-
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
     .trim()
@@ -125,6 +124,28 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
     toast.dismiss();
   }, []);
 
+  const sendEmail = async (email) => {
+    try {
+      const response = await fetch('https://connect.unlimitednow.site/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  
+  const handleSubmit = (values) => {
+    sendEmail(values.email);
+    // rest of the submit logic
+  };
+  
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog
@@ -250,7 +271,10 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                 <button
                                   type="button"
                                   disabled={disabled}
-                                  onClick={handleSubmit}
+                                  onClick={() => {
+                                    setShowSignIn(false);
+                                    resetForm();
+                                  }}
                                   className="underline underline-offset-1 font-semibold text-rose-500 hover:text-rose-600 disabled:hover:text-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                   Sign up
@@ -300,26 +324,3 @@ AuthModal.propTypes = {
 };
 
 export default AuthModal;
-
-
-const sendEmail = async (email) => {
-  try {
-    const response = await fetch('https://connect.unlimitednow.site/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-const handleSubmit = (values) => {
-  sendEmail(values.email);
-  // rest of the submit logic
-};
