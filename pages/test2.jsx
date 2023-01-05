@@ -1,24 +1,23 @@
 import axios from 'axios';
-import { useClerk } from '@clerk/clerk-react';
+import { useSignIn } from '@clerk/nextjs';
+import { useState } from 'react';
 
-function RegisterForm() {
-  const { createMagicLink } = useClerk();
+const SignUpForm = () => {
+  const { signUp } = useSignIn();
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [magicLink, setMagicLink] = useState('');
 
   async function handleSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
 
     try {
-      // Register user with NextAuth
-      await axios.post('/api/register', { email });
-
-      // Create magic link
-      const link = await createMagicLink({ email });
-      setMagicLink(link);
+      await signUp.create({
+        email,
+        password,
+      });
     } catch (error) {
       setError(error.message);
     } finally {
@@ -27,28 +26,27 @@ function RegisterForm() {
   }
 
   return (
-    <>
-      {magicLink ? (
-        <a href={magicLink}>
-          <button>Sign In</button>
-        </a>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Register'}
-          </button>
-          {error && <p>{error}</p>}
-        </form>
-      )}
-    </>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+      />
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Sign Up'}
+      </button>
+      {error && <p>{error}</p>}
+    </form>
   );
-}
+};
 
-export default RegisterForm
+export default SignUpForm
