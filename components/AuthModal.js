@@ -9,7 +9,6 @@ import { Formik, Form } from 'formik';
 import { Dialog, Transition } from '@headlessui/react';
 import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
 import Input from './Input';
-import { useUser, useClerk } from '@clerk/clerk-react';
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
@@ -125,8 +124,6 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
     toast.dismiss();
   }, []);
 
-  const { id, username, primaryEmailAddress, unsafeMetadata, publicMetadata, 	privateMetadata, profileImageUrl, fullName, firstName, lastName } = useUser();
-
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog
@@ -224,7 +221,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
                       onSubmit={signInWithEmail}
-                    >{primaryEmailAddress}
+                    >
                       {({ isSubmitting, isValid, values, resetForm }) => (
                         <Form className="mt-4">
                           <Input
