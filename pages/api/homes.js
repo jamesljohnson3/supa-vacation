@@ -1,9 +1,9 @@
-import { getSession } from 'next-auth/react';
+import { requireSession } from '@clerk/nextjs/api';
 import { prisma } from '../../lib/prisma';
 
 export default async function handler(req, res) {
   // Check if user is authenticated
-  const session = await getSession({ req });
+  const session = requireSession({ req });
   if (!session) {
     return res.status(401).json({ message: 'Unauthorized.' });
   }
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         req.body;
 
       const user = await prisma.user.findUnique({
-        where: { email: session.user.email },
+        where: { email: session.email },
       });
 
       const home = await prisma.home.create({
