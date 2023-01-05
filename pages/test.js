@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useClerk } from 'clerk';
-import { NextAuthContext } from 'next-auth/client';
+import { NextAuthContext } from 'next-auth';
 
 const MyComponent = () => {
   const { user, loading } = useClerk();
