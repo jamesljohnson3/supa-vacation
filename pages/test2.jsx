@@ -1,11 +1,9 @@
 import axios from 'axios';
-import { useSignIn } from '@clerk/nextjs';
+import { useSession } from '@clerk/clerk-react';
 import { useState } from 'react';
 
-const SignUpForm = () => {
-  const { signUp } = useSignIn();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const EmailForm = () => {
+  const { session } = useSession();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,9 +12,9 @@ const SignUpForm = () => {
     setIsLoading(true);
 
     try {
-      await signUp.create({
-        email,
-        password,
+      // Send API call to NextAuth to trigger email API
+      await axios.post('/api/auth/email/send', {
+        email: session.email,
       });
     } catch (error) {
       setError(error.message);
@@ -27,26 +25,12 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
       <button type="submit" disabled={isLoading}>
-        {isLoading ? 'Loading...' : 'Sign Up'}
+        {isLoading ? 'Loading...' : 'Send Email'}
       </button>
       {error && <p>{error}</p>}
     </form>
   );
 };
 
-export default SignUpForm
+export default EmailForm;
