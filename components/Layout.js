@@ -24,19 +24,19 @@ const menuItems = [
     href: '/create',
   },
   {
-    label: 'My sites',
+    label: 'Dashboard',
     icon: HomeIcon,
-    href: '/homes',
+    href: 'https://studio.unlimitpotential.com/dashboard5',
   },
   {
-    label: 'Find Inspiration',
+    label: 'Search ',
     icon: HeartIcon,
     href: 'https://get.unlimitednow.site',
   },
   {
-    label: 'Logout',
-    icon: LogoutIcon,
-    onClick: signOut,
+    label: 'Manage',
+    icon: HeartIcon,
+    href: 'https://spaces.unlimitpotential.com/account',
   },
 ];
 
