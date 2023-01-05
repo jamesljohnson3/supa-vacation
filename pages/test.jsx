@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 import { Dialog, Transition } from '@headlessui/react';
 import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
-import Input from './Input';
+import Input from '../components/Input';
 import { Formik, Form } from 'formik';
 
 const Confirm = ({ show = false, email = '' }) => (
