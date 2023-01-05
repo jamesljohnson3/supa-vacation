@@ -1,7 +1,7 @@
+import { getSession } from 'next-auth/react';
 import axios from 'axios';
 import Layout from '@/components/Layout';
 import ListingForm from '@/components/ListingForm';
-import { getSession } from '@clerk/clerk-react';
 
 export async function getServerSideProps(context) {
   // Check if user is authenticated
@@ -21,6 +21,7 @@ export async function getServerSideProps(context) {
     props: {},
   };
 }
+
 const Create = () => {
   const addHome = data => axios.post('/api/homes', data);
 
