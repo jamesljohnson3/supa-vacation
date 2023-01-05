@@ -7,7 +7,7 @@ You can tweak the max size, line 47
 import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
-import { supabase } from 'utils/supabaseClient';
+import { supabase } from '../utils/supabaseClient';
 
 type AvatarProperties = {
   url: string;
