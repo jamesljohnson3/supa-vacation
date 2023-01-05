@@ -19,7 +19,7 @@ const ListedHome = (home = null) => {
     (async () => {
       if (session?.user) {
         try {
-          const owner = await axios.get(`/api/homes/${home.id}/owner`);
+          const owner = await axios.get(`/api/sites/${home.id}/owner`);
           setIsOwner(owner?.id === session.user.id);
         } catch (e) {
           setIsOwner(false);
@@ -34,10 +34,10 @@ const ListedHome = (home = null) => {
       toastId = toast.loading('Deleting...');
       setDeleting(true);
       // Delete home from DB
-      await axios.delete(`/api/homes/${home.id}`);
+      await axios.delete(`/api/sites/${home.id}`);
       // Redirect user
       toast.success('Successfully deleted', { id: toastId });
-      router.push('/homes');
+      router.push('/sites');
     } catch (e) {
       console.log(e);
       toast.error('Unable to delete home', { id: toastId });

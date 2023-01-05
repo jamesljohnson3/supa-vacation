@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
 }
 
 const Edit = (home = null) => {
-  const handleOnSubmit = data => axios.patch(`/api/homes/${home.id}`, data);
+  const handleOnSubmit = data => axios.patch(`/api/sites/${home.id}`, data);
 
   return (
     <Layout>
