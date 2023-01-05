@@ -27,9 +27,9 @@ const sendVerificationRequest = ({ identifier, url }) => {
   });
   const emailTemplate = Handlebars.compile(emailFile);
   transporter.sendMail({
-    from: `"✨ SupaVacation" ${process.env.EMAIL_FROM}`,
+    from: `"✨ Unlimited Now" ${process.env.EMAIL_FROM}`,
     to: identifier,
-    subject: 'Your sign-in link for SupaVacation',
+    subject: 'Your sign-in link for  Unlimited Now',
     html: emailTemplate({
       base_url: process.env.NEXTAUTH_URL,
       signin_url: url,
@@ -47,12 +47,12 @@ const sendWelcomeEmail = async ({ user }) => {
     });
     const emailTemplate = Handlebars.compile(emailFile);
     await transporter.sendMail({
-      from: `"✨ SupaVacation" ${process.env.EMAIL_FROM}`,
+      from: `"✨  Unlimited Now" ${process.env.EMAIL_FROM}`,
       to: email,
-      subject: 'Welcome to SupaVacation! 🎉',
+      subject: 'Welcome to  Unlimited Now! 🎉',
       html: emailTemplate({
         base_url: process.env.NEXTAUTH_URL,
-        support_email: 'support@themodern.dev',
+        support_email: 'support@unlimitpotential.com',
       }),
     });
   } catch (error) {
