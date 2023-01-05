@@ -4,30 +4,30 @@ You have 2 components, the "AuthComponent" that handle the logic,
 and the "AuthText" that will show the description on the left of the screen
 */
 
-import Layout from '../components/Layout';
-import Login from '../components/UI/Login';
+import AuthComponent from '../components/SignUp';
+import AuthText from '../components/AuthText';
+import Layout from 'components/Layout';
 import { NextSeo } from 'next-seo';
-import { useAuth } from '../utils/AuthContext';
 import React from 'react';
 
-const LoginPage = (): JSX.Element => {
-  const { signIn, resetPassword } = useAuth();
-  return (
-    <>
-      <NextSeo
-        title={`${process.env.NEXT_PUBLIC_TITLE || ''} | Auth`}
-        description={`This is the auth page for ${
-          process.env.NEXT_PUBLIC_TITLE || ''
-        }`}
-      />
+const SignUpPage = (): JSX.Element => (
+  <>
+    <NextSeo
+      title={`${
+        process.env.NEXT_PUBLIC_TITLE ? process.env.NEXT_PUBLIC_TITLE : ''
+      } | Auth`}
+      description={`This is the auth page for ${
+        process.env.NEXT_PUBLIC_TITLE ? process.env.NEXT_PUBLIC_TITLE : ''
+      }`}
+    />
 
-      <Layout>
-        <div className="flex flex-wrap w-full mt-20 justify-evenly">
-          <Login signIn={signIn} resetPassword={resetPassword} />
-        </div>
-      </Layout>
-    </>
-  );
-};
+    <Layout>
+      <div className="flex flex-wrap w-full mt-20 justify-evenly">
+        <AuthText />
+        <AuthComponent />
+      </div>
+    </Layout>
+  </>
+);
 
-export default LoginPage;
+export default SignUpPage;
