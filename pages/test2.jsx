@@ -13,7 +13,7 @@ const EmailForm = () => {
 
     try {
       // Send API call to NextAuth to trigger email API
-      await axios.post('https://connnect.unlimitednow.site', {
+      await axios.post('https://connect.unlimitednow.site', {
         email: session.email,
       });
     } catch (error) {
