@@ -81,7 +81,7 @@ const Layout = ({ children = null }) => {
                   }}
                   className="hidden sm:block hover:bg-gray-200 transition px-3 py-1 rounded-md"
                 >
-                  List your home
+                  My Sites
                 </button>
                 {isLoadingUser ? (
                   <div className="h-8 w-[75px] bg-gray-200 animate-pulse rounded-md" />
