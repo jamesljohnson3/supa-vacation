@@ -224,7 +224,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
                       onSubmit={signInWithEmail}
-                    >{primaryEmailAddress.toString()}
+                    >{primaryEmailAddress}
                       {({ isSubmitting, isValid, values, resetForm }) => (
                         <Form className="mt-4">
                           <Input
