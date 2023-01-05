@@ -6,7 +6,7 @@ function MyComponent() {
 
   // If session is not loaded, fetch it using NextAuth
   if (!isLoaded) {
-    getSession().then((session) => {
+    createSession().then((session) => {
       console.log(session);
     });
   }
