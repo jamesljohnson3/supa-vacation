@@ -5,7 +5,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { supabase } from 'utils/supabaseClient';
+import { supabase } from '../../utils/supabaseClient';
 
 export default function handler(
   request: NextApiRequest,
