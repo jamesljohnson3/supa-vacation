@@ -1,6 +1,7 @@
 import { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import { useUser, useSignIn } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import React from "react";
 
 // Grab the query param server side, and pass through props
 export const getServerSideProps: GetServerSideProps = async (context) => {
