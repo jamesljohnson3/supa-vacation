@@ -221,7 +221,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                       initialValues={{ email: '' }}
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
-                      onSubmit={signInWithEmail}
+                      onSubmit={handleSubmit}
                     >
                       {({ isSubmitting, isValid, values, resetForm }) => (
                         <Form className="mt-4">
