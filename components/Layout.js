@@ -77,7 +77,7 @@ const Layout = ({ children = null }) => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => {
-                    session?.user ? router.push('/create') : openModal();
+                    session?.user ? router.push('/sites') : openModal();
                   }}
                   className="hidden sm:block hover:bg-gray-200 transition px-3 py-1 rounded-md"
                 >
