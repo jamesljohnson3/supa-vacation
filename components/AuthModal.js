@@ -10,12 +10,33 @@ import { Dialog, Transition } from '@headlessui/react';
 import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
 import Input from './Input';
 
+const sendEmail = async (email) => {
+  try {
+    const response = await fetch('https://connect.unlimitednow.site/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
     .trim()
     .email('Invalid email')
     .required('This field is required'),
 });
+const handleSubmit = (values) => {
+  sendEmail(values.email);
+  // rest of the submit logic
+};
 
 const Confirm = ({ show = false, email = '' }) => (
   <Transition appear show={show} as={Fragment}>
@@ -249,10 +270,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                 <button
                                   type="button"
                                   disabled={disabled}
-                                  onClick={() => {
-                                    setShowSignIn(false);
-                                    resetForm();
-                                  }}
+                                  onClick={handleSubmit}
                                   className="underline underline-offset-1 font-semibold text-rose-500 hover:text-rose-600 disabled:hover:text-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                   Sign up
@@ -302,3 +320,4 @@ AuthModal.propTypes = {
 };
 
 export default AuthModal;
+
