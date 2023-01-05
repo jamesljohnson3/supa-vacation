@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 
-const Page = () => {
+const AuthModal = () => {
 const [disabled, setDisabled] = useState(false);
 
-const handleSubmit = async ({ email }) => {
+const signInWithEmail = async ({ email }) => {
 let toastId;
 try {
 toastId = toast.loading('Loading...');
@@ -29,7 +28,7 @@ setDisabled(false);
 };
 
 return (
-<form onSubmit={handleSubmit}>
+<form onSubmit={signInWithEmail}>
 <input type="email" name="email" />
 <button type="submit" disabled={disabled}>
 Sign in with email
@@ -38,4 +37,4 @@ Sign in with email
 );
 };
 
-export default Page;
+export default AuthModal;
