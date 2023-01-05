@@ -50,7 +50,7 @@ const Layout = ({ children = null }) => {
   const [showModal, setShowModal] = useState(true);
 
   const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <>
