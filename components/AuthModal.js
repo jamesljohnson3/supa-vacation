@@ -68,7 +68,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   const [showConfirm, setConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
 
-  const handleSubmit = async ({ email }) => {
+  const signInWithEmail = async ({ email }) => {
     let toastId;
     try {
       toastId = toast.loading('Loading...');
@@ -124,29 +124,6 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
     toast.dismiss();
   }, []);
 
-  const sendEmail = async (email) => {
-    try {
-      const response = await fetch('https://connect.unlimitednow.site/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  
- const signInWithEmail = async (values) => {
-    sendEmail(values.email);
-    // rest of the submit logic
-    await signInWithEmail(values.email);
-  };
-  
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog
@@ -243,7 +220,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                       initialValues={{ email: '' }}
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
-                      onSubmit={handleSubmit}
+                      onSubmit={signInWithEmail}
                     >
                       {({ isSubmitting, isValid, values, resetForm }) => (
                         <Form className="mt-4">
