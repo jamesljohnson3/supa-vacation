@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
-import { useAuth } from '../utils/AuthContext';
+import { useAuth } from '@clerk/nextjs';
 import React from 'react';
 
 type LayoutProperties = {
@@ -22,7 +22,7 @@ type LayoutProperties = {
 };
 
 const Layout = ({ children }: LayoutProperties): JSX.Element => {
-  const { user, signOut } = useAuth();
+  const { userId, sessionId } = useAuth();
 
   return (
     <div className="w-full min-h-screen m-auto bg-base-100 text-base-content font-body">
