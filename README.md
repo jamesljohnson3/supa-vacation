@@ -6,7 +6,7 @@ Build a FullStack App with Next.js, Supabase & Prisma | The Modern Dev by
 
 - Preview the app live [here](https://supa-vacation.vercel.app/).
 
-[![SupaVacation](https://user-images.githubusercontent.com/4352286/152961498-0e7d1575-a2a2-4aae-93e0-a75e701cef06.png)](https://supa-vacation.vercel.app/)
+[![SupaVacation](https://user-images.githubusercsontent.com/4352286/152961498-0e7d1575-a2a2-4aae-93e0-a75e701cef06.png)](https://supa-vacation.vercel.app/)
 
 ## Getting Started
 
